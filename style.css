@@ -1,5 +1,3 @@
-
-
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap");
 
 :root {
@@ -11,7 +9,7 @@
 
 body {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Outfit", sans-serif;
@@ -24,9 +22,9 @@ body {
 
 img {
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .light {
@@ -69,8 +67,8 @@ li {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .col {
@@ -79,8 +77,12 @@ li {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
 }
 
 header {
@@ -93,17 +95,17 @@ header {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 nav {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: var(--semi-blue-color);
   height: 100%;
   border-radius: 20px;
@@ -112,22 +114,22 @@ nav {
 
 .col_1 {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 100%;
   padding: 32px 28px;
   position: relative;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .col_2 {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .logo {
@@ -146,22 +148,22 @@ nav {
   height: 200px;
   width: auto;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
-.menu svg {
+.link {
   fill: var(--greyish-blue-color);
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
 }
 
-.active_nav {
+.active_tab {
   fill: white !important;
 }
 
-.menu svg:hover {
+.link:hover {
   fill: var(--red-color);
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -196,8 +198,8 @@ nav {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .searchbar img {
@@ -254,8 +256,8 @@ nav {
 
 .row_1 {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: relative;
   width: 2546px;
 }
@@ -280,8 +282,8 @@ nav {
   height: 230px;
   margin-right: 40px;
   -webkit-transform: translateY(100%);
-      -ms-transform: translateY(100%);
-          transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
   cursor: pointer;
 }
 
@@ -299,32 +301,52 @@ nav {
   transition: 0.1s;
 }
 
-.fadeInTrendingCard_active {
+.fadeInTrendingCard {
   -webkit-animation: fadeInTrendingCard 0.9s;
-          animation: fadeInTrendingCard 0.9s;
+  animation: fadeInTrendingCard 0.9s;
+  animation-delay: 0.2s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
+.fadeTrendingCard:nth-child(1) .fadeInTrendingCard {
+  animation-delay: 0.2s;
+}
+
+.fadeTrendingCard:nth-child(2) .fadeInTrendingCard {
+  animation-delay: 0.4s;
+}
+
+.fadeTrendingCard:nth-child(3) .fadeInTrendingCard {
+  animation-delay: 0.6s;
+}
+
+.fadeTrendingCard:nth-child(4) .fadeInTrendingCard {
+  animation-delay: 0.8s;
+}
+
+.fadeTrendingCard:nth-child(5) .fadeInTrendingCard {
+  animation-delay: 1s;
+}
 @-webkit-keyframes fadeInTrendingCard {
   from {
     -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
   }
   to {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes fadeInTrendingCard {
   from {
     -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
   }
   to {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -334,7 +356,13 @@ nav {
   width: 100%;
   height: 100px;
   bottom: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.01)), to(rgba(0, 0, 0, 0.75)));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.01)),
+    to(rgba(0, 0, 0, 0.75))
+  );
   background: -o-linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.75));
   background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.75));
   border-radius: 8px;
@@ -351,11 +379,11 @@ nav {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .bg_img_card img {
@@ -382,28 +410,28 @@ nav {
 
 .fadeInTrendingText {
   -webkit-transform: translateY(100%);
-      -ms-transform: translateY(100%);
-          transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
 }
 
-.fadeInTrendingText_active {
+.fadeInTrendingText {
   -webkit-animation: fadeInTrendingCard 0.3s;
-          animation: fadeInTrendingCard 0.3s;
+  animation: fadeInTrendingCard 0.3s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
-.fadeInTrendingText_active:nth-child(1) {
-  -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
+.fadeInTrendingText:nth-child(1) {
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
 }
-.fadeInTrendingText_active:nth-child(2) {
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+.fadeInTrendingText:nth-child(2) {
+  -webkit-animation-delay: 1.25s;
+  animation-delay: 1.25s;
 }
-.fadeInTrendingText_active:nth-child(3) {
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+.fadeInTrendingText:nth-child(3) {
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 .rating {
@@ -415,8 +443,8 @@ nav {
   padding: 0 19px;
   position: relative;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .category::after {
@@ -467,35 +495,35 @@ nav {
   font-size: 24px;
   line-height: 30px;
   -webkit-transform: translateY(160%);
-      -ms-transform: translateY(160%);
-          transform: translateY(160%);
+  -ms-transform: translateY(160%);
+  transform: translateY(160%);
   -webkit-animation: fadeInTrendingTitle 0.9s;
-          animation: fadeInTrendingTitle 0.9s;
+  animation: fadeInTrendingTitle 0.9s;
   -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
+  animation-delay: 0.8s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes fadeInTrendingTitle {
   from {
     -webkit-transform: translateY(160%);
-            transform: translateY(160%);
+    transform: translateY(160%);
   }
   to {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
 @keyframes fadeInTrendingTitle {
   from {
     -webkit-transform: translateY(160%);
-            transform: translateY(160%);
+    transform: translateY(160%);
   }
   to {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -520,8 +548,8 @@ nav {
   left: 10px;
   top: 9px;
   -webkit-transform: rotate(2deg);
-      -ms-transform: rotate(2deg);
-          transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
   stroke: white;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -538,63 +566,19 @@ nav {
   height: 14px;
 }
 
-.row_3 {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+.bookmark_icon_2 {
+  visibility: hidden;
 }
 
-.recommendation_card:nth-last-child(1) {
-  margin-right: 0;
+.bookmark_active {
+  visibility: visible;
 }
 
-.recommendation_card {
-  margin-right: 36px;
-  margin-bottom: 32px;
+.bookmark svg:nth-child(2) {
+  transform: rotate(0deg);
 }
 
-.recommendation .heading {
-  margin-bottom: 32px;
-}
-
-.recommendation_img {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  cursor: pointer;
-}
-
-.recommendation_img:hover .opacity_hover {
-  opacity: 0.5;
-  -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.recommendation_img:hover .play_card {
-  opacity: 1;
-  -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.bg_recommendation_img {
-  width: 280px;
-  height: 174px;
-}
-
-.bookmark_recommendation {
-  right: 16px;
-  top: 16px;
-}
-
-.bookmark_recommendation svg {
+.bookmark_regular svg {
   width: 12px;
   height: 14px;
 }
@@ -614,6 +598,62 @@ nav {
   transition: 0.2s;
 }
 
+.row_3 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.regular_card:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.regular_card {
+  margin-right: 36px;
+  margin-bottom: 32px;
+}
+
+.regular .heading {
+  margin-bottom: 32px;
+}
+
+.regular_img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.regular_img:hover .opacity_hover {
+  opacity: 0.5;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.regular_img:hover .play_card {
+  opacity: 1;
+  -webkit-transition: 0.1s;
+  -o-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.bg_regular_img {
+  width: 280px;
+  height: 174px;
+}
+
+.bookmark_regular {
+  right: 16px;
+  top: 16px;
+}
+
 .row_5 {
   padding-top: 8px;
   padding-bottom: 5px;
@@ -623,114 +663,114 @@ nav {
   width: fit-content;
 }
 
-.recommendation_title {
+.regular_title {
   font-size: 18px;
   line-height: 23px;
   overflow: hidden;
 }
 
-.recommendation_title p {
+.regular_title p {
   margin: 0;
   -webkit-transform: translateY(100%);
-      -ms-transform: translateY(100%);
-          transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
   -webkit-animation: fadeBottom 0.5s forwards;
-          animation: fadeBottom 0.5s forwards;
+  animation: fadeBottom 0.5s forwards;
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 @-webkit-keyframes fadeBottom {
   from {
     -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
   }
   to {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
 @keyframes fadeBottom {
   from {
     -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
   }
   to {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
-.recommendation_year {
+.regular_year {
   -webkit-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  transform: translateX(-100%);
   -webkit-animation: fadeLeft 0.5s forwards;
-          animation: fadeLeft 0.5s forwards;
+  animation: fadeLeft 0.5s forwards;
   -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 @-webkit-keyframes fadeLeft {
   from {
     -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   to {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
 @keyframes fadeLeft {
   from {
     -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   to {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
-.recommendation_category {
+.regular_category {
   opacity: 0;
   -webkit-animation: fadeOpacity 0.5s forwards;
-          animation: fadeOpacity 0.5s forwards;
+  animation: fadeOpacity 0.5s forwards;
   -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
-.recommendation_rating {
+.regular_rating {
   -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
   -webkit-animation: fadeRight 0.5s forwards;
-          animation: fadeRight 0.5s forwards;
+  animation: fadeRight 0.5s forwards;
   -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 
 @-webkit-keyframes fadeRight {
   from {
     -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    transform: translateX(100%);
   }
   to {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
 @keyframes fadeRight {
   from {
     -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    transform: translateX(100%);
   }
   to {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
 }
 
@@ -739,17 +779,17 @@ nav {
   opacity: 0;
   background-color: rgba(255, 255, 255, 0.25);
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   border-radius: 29px;
   width: 117px;
   -webkit-transition: 0.1s;
   -o-transition: 0.1s;
   transition: 0.1s;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .play_card img {
@@ -767,9 +807,9 @@ nav {
 .fadeOpacity {
   opacity: 0;
   -webkit-animation: fadeOpacity 1s forwards;
-          animation: fadeOpacity 1s forwards;
+  animation: fadeOpacity 1s forwards;
   -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 @-webkit-keyframes fadeOpacity {
@@ -788,4 +828,26 @@ nav {
   to {
     opacity: 1;
   }
+}
+
+.row_8 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row_9 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.bookmarked_movies {
+  padding-bottom: 8px;
+}
+
+.row_11 {
+  flex-wrap: wrap;
+}
+
+.row_12 {
+  flex-wrap: wrap;
 }
