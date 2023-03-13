@@ -1,5 +1,3 @@
-
-
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap");
 
 :root {
@@ -51,6 +49,10 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 ul {
@@ -155,17 +157,21 @@ nav {
 }
 
 .link {
+  color: white;
+}
+
+.link svg {
   fill: var(--greyish-blue-color);
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
 }
 
-.active_tab {
+.active_tab svg {
   fill: white !important;
 }
 
-.link:hover {
+.link svg:hover {
   fill: var(--red-color);
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
@@ -188,6 +194,7 @@ nav {
 .main {
   padding-top: 58px;
   overflow: hidden;
+  width: 100%;
   overflow-y: auto;
 }
 
@@ -202,6 +209,8 @@ nav {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
+  padding-bottom: 14px;
 }
 
 .searchbar img {
@@ -235,6 +244,52 @@ nav {
 
 .searchbar input::placeholder {
   font-weight: 300;
+}
+
+.on_search {
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.line_bot_input {
+  opacity: 0;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  will-change: opacity;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--greyish-blue-color);
+  width: calc(100% - 104px);
+  height: 1px;
+  left: 64px;
+}
+
+input:focus + .line_bot_input {
+  opacity: 1;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.result {
+  padding-top: 34px;
+  display: none;
+}
+
+.result_message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  font-size: 32px;
+}
+
+.result a {
+  padding-left: 8px;
+  color: var(--greyish-blue-color);
+  text-decoration: underline;
 }
 
 #trending {
@@ -307,34 +362,34 @@ nav {
   -webkit-animation: fadeInTrendingCard 0.9s;
   animation: fadeInTrendingCard 0.9s;
   -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation-delay: 0.2s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 
 .fadeTrendingCard:nth-child(1) .fadeInTrendingCard {
   -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 
 .fadeTrendingCard:nth-child(2) .fadeInTrendingCard {
   -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
+  animation-delay: 0.4s;
 }
 
 .fadeTrendingCard:nth-child(3) .fadeInTrendingCard {
   -webkit-animation-delay: 0.6s;
-          animation-delay: 0.6s;
+  animation-delay: 0.6s;
 }
 
 .fadeTrendingCard:nth-child(4) .fadeInTrendingCard {
   -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
+  animation-delay: 0.8s;
 }
 
 .fadeTrendingCard:nth-child(5) .fadeInTrendingCard {
   -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 @-webkit-keyframes fadeInTrendingCard {
   from {
@@ -365,7 +420,13 @@ nav {
   height: 100px;
   bottom: 0;
   background: -o-linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.75));
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.01)), to(rgba(0, 0, 0, 0.75)));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.01)),
+    to(rgba(0, 0, 0, 0.75))
+  );
   background: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.75));
   border-radius: 8px;
   opacity: 1;
@@ -570,6 +631,7 @@ nav {
 
 .bookmark_icon_2 {
   visibility: hidden;
+  z-index: 999;
 }
 
 .bookmark_active {
@@ -578,8 +640,8 @@ nav {
 
 .bookmark svg:nth-child(2) {
   -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 
 .bookmark_regular svg {
@@ -850,10 +912,72 @@ nav {
 
 .row_11 {
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .row_12 {
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.add_bookmarks {
+  color: white;
+  position: relative;
+  -webkit-animation: fadeOpacity 1s forwards;
+  animation: fadeOpacity 1s forwards;
+  opacity: 0;
+  animation-delay: 0s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  margin-bottom: 32px;
+}
+
+.add_bookmarks p {
+  padding-bottom: 15px;
+  margin: 0;
+  font-size: 25px;
+  opacity: 0.75;
+}
+
+.add_bookmarks a {
+  opacity: 1;
+  padding: 8px 25px;
+  font-size: 18px;
+  display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 8px;
+  background-color: var(--greyish-blue-color);
+  color: white;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.add_bookmarks a:hover {
+  background-color: #435071;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.row_13 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row_14 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row_15 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row_16 {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
