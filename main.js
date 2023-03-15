@@ -144,7 +144,7 @@ function addBookmarks(event) {
     console.log(isBookmarked);
     signet.classList.toggle("bookmark_active", isBookmarked);
     cardData.isBookmarked = isBookmarked;
-    bookmarkState[cardId] = isBookmarked; // stocke l'état de signet dans bookmarkState
+    bookmarkState[cardId] = isBookmarked;
     localStorage.setItem("bookmarkState", JSON.stringify(bookmarkState));
 
     displayBookmarksCards(); 
