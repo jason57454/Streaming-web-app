@@ -140,14 +140,14 @@ function addBookmarks(event) {
   const index = jsonData.findIndex((data) => data.id === cardId);
   if (index !== -1) {
     const cardData = jsonData[index];
-    const isBookmarked = !bookmarkState[cardId]; // inverse l'état actuel de signet
+    const isBookmarked = !bookmarkState[cardId]; 
     console.log(isBookmarked);
     signet.classList.toggle("bookmark_active", isBookmarked);
     cardData.isBookmarked = isBookmarked;
     bookmarkState[cardId] = isBookmarked; // stocke l'état de signet dans bookmarkState
     localStorage.setItem("bookmarkState", JSON.stringify(bookmarkState));
 
-    displayBookmarksCards(); // appel de la fonction pour mettre à jour les signets affichés
+    displayBookmarksCards(); 
   }
 }
 
