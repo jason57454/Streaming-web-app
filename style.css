@@ -1149,7 +1149,8 @@ input:focus + .line_bot_input {
   }
 
   .line_bot_input {
-    width: calc(100% - 82px);
+    width: calc(100% - 57px);
+    left: 43px;
   }
 
   .heading p {
