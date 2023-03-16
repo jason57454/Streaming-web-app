@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="./assets/favicon-32x32.png" type="image/png" />
     <title>Entertainment web app</title>
@@ -77,165 +82,181 @@
         </div>
       </nav>
     </header>
-    <div id="home" class="main col home_tab tab hidden">
-      <div class="col col_3">
-        <div class="searchbar">
-          <img src="./assets/icon-search.svg" alt="" />
-          <input
-            id="input_home"
-            class="light"
-            type="text"
-            placeholder="Search for movies or TV series"
-          />
-          <div class="line_bot_input"></div>
-        </div>
-        <div id="result">
-          <div class="result result_home col">
-            <div class="heading">
-              <p class="light row result_home_message"></p>
-            </div>
-            <div class="row row_13"></div>
+    <div id="home" class="main home_tab tab hidden">
+      <div class="container col">
+        <div class="col col_3">
+          <div class="searchbar">
+            <img src="./assets/icon-search.svg" alt="" />
+            <input
+              id="input_home"
+              class="light"
+              type="text"
+              placeholder="Search for movies or TV series"
+            />
+            <div class="line_bot_input"></div>
           </div>
-        </div>
-      </div>
-      <div class="on_search on_search_home">
-        <section id="trending">
-          <div class="trending col">
-            <div class="heading">
-              <p class="light">Trending</p>
-            </div>
-            <div class="row row_1">
-              <!-- HTML from displayTrendingCards function -->
-            </div>
-          </div>
-        </section>
-        <section id="recommendation">
-          <div class="col col_5">
-            <div class="recommendation col">
+          <div id="result">
+            <div class="result result_home col">
               <div class="heading">
-                <p class="light">Recommended for you</p>
+                <p class="light row result_home_message"></p>
+              </div>
+              <div class="row row_13"></div>
+            </div>
+          </div>
+        </div>
+        <div class="on_search on_search_home">
+          <section id="trending">
+            <div class="trending col">
+              <div class="heading">
+                <p class="light">Trending</p>
+              </div>
+              <div class="swiper">
+                <div class="row row_1 swiper-wrapper">
+                  <!-- HTML from displayTrendingCards function -->
+                </div>
               </div>
             </div>
-            <div class="row row_3">
-              <!-- HTML from displayRecommendationCards function -->
+          </section>
+          <section id="recommendation">
+            <div class="col col_5">
+              <div class="recommendation col">
+                <div class="heading">
+                  <p class="light">Recommended for you</p>
+                </div>
+              </div>
+              <div class="row row_3">
+                <!-- HTML from displayRecommendationCards function -->
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </div>
     <div id="movie" class="main movies_tab col tab hidden">
-      <div class="col col_3">
-        <div class="searchbar">
-          <img src="./assets/icon-search.svg" alt="" />
-          <input
-            id="input_movies"
-            class="light"
-            type="text"
-            placeholder="Search for movies"
-          />
-          <div class="line_bot_input"></div>
-        </div>
-        <div id="result">
-          <div class="result result_movie col">
-            <div class="heading">
-              <p class="light row result_movie_message"></p>
-            </div>
-            <div class="row row_14"></div>
+      <div class="container col">
+        <div class="col col_3">
+          <div class="searchbar">
+            <img src="./assets/icon-search.svg" alt="" />
+            <input
+              id="input_movies"
+              class="light"
+              type="text"
+              placeholder="Search for movies"
+            />
+            <div class="line_bot_input"></div>
           </div>
-        </div>
-      </div>
-      <div class="on_search on_search_movie">
-        <section id="movies_content">
-          <div class="movies col">
-            <div class="heading">
-              <p class="light">Movies</p>
-            </div>
-            <div class="row row_9">
-              <!-- HTML from displayMoviesCards function -->
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <div id="series" class="main series_tab col tab hidden">
-      <div class="col col_3">
-        <div class="searchbar">
-          <img src="./assets/icon-search.svg" alt="" />
-          <input
-            id="input_series"
-            class="light"
-            type="text"
-            placeholder="Search for TV series"
-          />
-          <div class="line_bot_input"></div>
-        </div>
-        <div id="result">
-          <div class="result result_series col">
-            <div class="heading">
-              <p class="light row result_series_message"></p>
-            </div>
-            <div class="row row_15"></div>
-          </div>
-        </div>
-      </div>
-      <div class="on_search on_search_series">
-        <section id="series_content">
-          <div class="series col">
-            <div class="heading">
-              <p class="light">TV Series</p>
-            </div>
-            <div class="row row_8">
-              <!-- HTML from displaySeriesCard function -->
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <div id="bookmarks" class="main bookmarks_tab col tab hidden">
-      <div class="col col_3">
-        <div class="searchbar">
-          <img src="./assets/icon-search.svg" alt="" />
-          <input
-            id="input_bookmarks"
-            class="light"
-            type="text"
-            placeholder="Search for bookmarked shows"
-          />
-          <div class="line_bot_input"></div>
-        </div>
-        <div id="result">
-          <div class="result result_bookmarks col">
-            <div class="heading">
-              <p class="light row result_bookmarks_message"></p>
-            </div>
-            <div class="row row_16"></div>
-          </div>
-        </div>
-      </div>
-      <div class="on_search on_search_bookmarks">
-        <section id="bookmark_content">
-          <div class="col">
-            <div class="bookmarked_movies">
+          <div id="result">
+            <div class="result result_movie col">
               <div class="heading">
-                <p class="light">Bookmarked Movies</p>
+                <p class="light row result_movie_message"></p>
               </div>
-              <div class="row row_11">
+              <div class="row row_14"></div>
+            </div>
+          </div>
+        </div>
+        <div class="on_search on_search_movie">
+          <section id="movies_content">
+            <div class="movies col">
+              <div class="heading">
+                <p class="light">Movies</p>
+              </div>
+              <div class="row row_9">
+                <!-- HTML from displayMoviesCards function -->
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div id="series" class="main series_tab col tab hidden">
+      <div class="container col">
+        <div class="col col_3">
+          <div class="searchbar">
+            <img src="./assets/icon-search.svg" alt="" />
+            <input
+              id="input_series"
+              class="light"
+              type="text"
+              placeholder="Search for TV series"
+            />
+            <div class="line_bot_input"></div>
+          </div>
+          <div id="result">
+            <div class="result result_series col">
+              <div class="heading">
+                <p class="light row result_series_message"></p>
+              </div>
+              <div class="row row_15"></div>
+            </div>
+          </div>
+        </div>
+        <div class="on_search on_search_series">
+          <section id="series_content">
+            <div class="series col">
+              <div class="heading">
+                <p class="light">TV Series</p>
+              </div>
+              <div class="row row_8">
+                <!-- HTML from displaySeriesCard function -->
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div id="bookmarks" class="main bookmarks_tab col tab hidden">
+      <div class="container col">
+        <div class="col col_3">
+          <div class="searchbar">
+            <img src="./assets/icon-search.svg" alt="" />
+            <input
+              id="input_bookmarks"
+              class="light"
+              type="text"
+              placeholder="Search for bookmarked shows"
+            />
+            <div class="line_bot_input"></div>
+          </div>
+          <div id="result">
+            <div class="result result_bookmarks col">
+              <div class="heading">
+                <p class="light row result_bookmarks_message"></p>
+              </div>
+              <div class="row row_16"></div>
+            </div>
+          </div>
+        </div>
+        <div class="on_search on_search_bookmarks">
+          <section id="bookmark_content">
+            <div class="col">
+              <div class="bookmarked_movies">
+                <div class="heading">
+                  <p class="light">Bookmarked Movies</p>
+                </div>
+                <div class="row row_11">
+                  <!-- Bookmarked movies from displayBookmarkCards function -->
+                </div>
+              </div>
+              <div class="heading">
+                <p class="light">Bookmarked TV Series</p>
+              </div>
+              <div class="row row_12">
                 <!-- Bookmarked movies from displayBookmarkCards function -->
               </div>
             </div>
-            <div class="heading">
-              <p class="light">Bookmarked TV Series</p>
-            </div>
-            <div class="row row_12">
-              <!-- Bookmarked movies from displayBookmarkCards function -->
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </div>
-
     <script src="main.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        // Optional parameters
+        direction: "horizontal",
+        loop: false,
+      });
+    </script>
   </body>
 </html>
