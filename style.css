@@ -1079,7 +1079,7 @@ input:focus + .line_bot_input {
   }
 
   .line_bot_input {
-    width: calc(100% - 56px);
+    width: calc(100% - 82px);
   }
 
   .main {
@@ -1099,12 +1099,6 @@ input:focus + .line_bot_input {
   .bg_regular_img {
     width: 220px;
     height: 140px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .row_3 {
-    justify-content: space-between;
   }
 }
 
@@ -1152,6 +1146,10 @@ input:focus + .line_bot_input {
 
   .searchbar input {
     font-size: 16px;
+  }
+
+  .line_bot_input {
+    width: calc(100% - 82px);
   }
 
   .heading p {
@@ -1259,5 +1257,11 @@ input:focus + .line_bot_input {
   .regular_title {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .row_3 {
+    justify-content: space-between;
   }
 }
