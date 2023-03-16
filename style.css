@@ -1265,4 +1265,20 @@ input:focus + .line_bot_input {
   .row_3 {
     justify-content: space-between;
   }
+  
+  .row_9 {
+    justify-content: space-between;
+  }
+
+  .row_8 {
+    justify-content: space-between;
+  }
+
+  .row_11 {
+    justify-content: space-between;
+  }
+
+  .row_12 {
+    justify-content: space-between;
+  }
 }
