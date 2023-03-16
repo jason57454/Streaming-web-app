@@ -1079,7 +1079,7 @@ input:focus + .line_bot_input {
   }
 
   .line_bot_input {
-    width: calc(100% - 90px);
+    width: calc(100% - 56px);
   }
 
   .main {
@@ -1099,6 +1099,12 @@ input:focus + .line_bot_input {
   .bg_regular_img {
     width: 220px;
     height: 140px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .row_3 {
+    justify-content: space-between;
   }
 }
 
