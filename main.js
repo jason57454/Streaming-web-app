@@ -95,6 +95,7 @@ function route() {
         bookmarkState[item.id] = bookmarkState[item.id] || false;
       });
       handler();
+
       const storedBookmarkState = JSON.parse(
         localStorage.getItem("bookmarkState")
       );
@@ -140,14 +141,14 @@ function addBookmarks(event) {
   const index = jsonData.findIndex((data) => data.id === cardId);
   if (index !== -1) {
     const cardData = jsonData[index];
-    const isBookmarked = !bookmarkState[cardId]; 
+    const isBookmarked = !bookmarkState[cardId]; // inverse l'état actuel de signet
     console.log(isBookmarked);
     signet.classList.toggle("bookmark_active", isBookmarked);
     cardData.isBookmarked = isBookmarked;
-    bookmarkState[cardId] = isBookmarked;
+    bookmarkState[cardId] = isBookmarked; // stocke l'état de signet dans bookmarkState
     localStorage.setItem("bookmarkState", JSON.stringify(bookmarkState));
 
-    displayBookmarksCards(); 
+    displayBookmarksCards(); // appel de la fonction pour mettre à jour les signets affichés
   }
 }
 
@@ -164,9 +165,10 @@ function displaySearch(
   let result = document.querySelector(resultClass);
   let resultMessage = document.querySelector(resultMessageClass);
   let displayResult = document.querySelector(displayResultClass);
+  value = input.value.trim();
 
   input.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
+    if (event.key) {
       onSearch.style.display = "none";
       result.style.display = "flex";
       value = input.value.trim();
@@ -181,14 +183,14 @@ function displaySearch(
         value === "" ||
         filteredData.length === 0
       ) {
-        resultMessage.innerHTML = `No result found for <span style="color: var(--red-color) ; padding-left: 10px ; opacity: 0.75" ">"${value}"</span>. 
+        resultMessage.innerHTML = `No result found for "${value}". 
         You can try again or you can reload the page<a href="#" onclick="location.reload()">here.</a>`;
         displayResult.style.display = "none";
       } else if (filteredData.length <= 1) {
-        resultMessage.innerHTML = `Found <span class="medium" style="color: var(--red-color) ; padding: 0 10px">${filteredData.length}</span> result for 
+        resultMessage.innerHTML = `Found ${filteredData.length} result for 
         '${value}'.`;
       } else {
-        resultMessage.innerHTML = `Found <span class="medium" style="color: var(--red-color) ; padding: 0 10px">${filteredData.length}</span> results for '${value}'.`;
+        resultMessage.innerHTML = `Found ${filteredData.length} results for '${value}'.`;
       }
 
       if (filteredData.length > 0) {
@@ -196,9 +198,8 @@ function displaySearch(
         displayResult.style.display = "flex";
         displayResult.innerHTML = filteredData
           .map((card) => {
-            return ` <div class="regular_card card col" data-card-id="${
-              card.id
-            }">
+            return ` 
+            <div class="regular_card card col" data-card-id="${card.id}">
       
       <div class="regular_img play_hover fadeOpacity">
         <img
@@ -254,12 +255,60 @@ function displaySearch(
 function displayTrendingCards() {
   let card = document.querySelector(".row_1");
 
-  card.innerHTML = jsonData
-    .filter((card) => card.isTrending === true)
-    .map((card) => {
-      return ` 
+  let mobileCards = window.matchMedia("(max-width: 520px)");
+
+  if (mobileCards.matches) {
+    card.innerHTML = jsonData
+      .filter((card) => card.isTrending === true)
+      .map((card) => {
+        return ` 
       <div class="fadeTrendingCard">
-       <div class="trending_card fadeInTrendingCard card" data-card-id="${
+       <div class="trending_card fadeInTrendingCard splide__slide card" data-card-id="${
+         card.id
+       }">
+        <div class="bg_img_card  play_hover">
+          <img
+            class="opacity_hover"
+            src="${card.thumbnail.trending.small}"
+            alt=""
+          />
+          <div class="play_card row">
+                <img src="./assets/icon-play.svg" alt="" />
+                <p class="medium">Play</p>
+          </div>
+        </div>
+        <div class="bookmark bookmark_trending bookmark_hover">
+        <svg class="bookmark_icon bookmark_icon_1 " width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke-width="1.5" fill="none"/></svg>
+        <svg class="bookmark_icon bookmark_icon_2" width="12" height="14" xmlns="http://www.w3.org/2000/svg"><path d="M10.61 0c.14 0 .273.028.4.083a1.03 1.03 0 0 1 .657.953v11.928a1.03 1.03 0 0 1-.656.953c-.116.05-.25.074-.402.074-.291 0-.543-.099-.756-.296L5.833 9.77l-4.02 3.924c-.218.203-.47.305-.756.305a.995.995 0 0 1-.4-.083A1.03 1.03 0 0 1 0 12.964V1.036A1.03 1.03 0 0 1 .656.083.995.995 0 0 1 1.057 0h9.552Z" fill="#FFF"/></svg>
+        </div>
+        <div class="col col_4">
+          <div class="row row_2">
+            <div class="light year year_trending font_15 fadeInTrendingText"><span>${
+              card.year
+            }</span></div>
+            <div class="row light category category_trending fadeInTrendingText">
+              <img src="./assets/icon-category-${
+                card.category === "Movie" ? "movie" : "tv"
+              }.svg" alt="" />
+              <p class="font_15">${card.category}</p>
+            </div>
+            <p class="rating trend_rating light font_15 fadeInTrendingText">${
+              card.rating
+            }</p>
+          </div>
+          <div class="title_card title_trending_card medium">${card.title}</div>
+        </div>
+      </div>
+      </div>`;
+      })
+      .join("");
+  } else {
+    card.innerHTML = jsonData
+      .filter((card) => card.isTrending === true)
+      .map((card) => {
+        return ` 
+      <div class="fadeTrendingCard">
+       <div class="trending_card fadeInTrendingCard splide__slide card" data-card-id="${
          card.id
        }">
         <div class="bg_img_card  play_hover">
@@ -296,8 +345,9 @@ function displayTrendingCards() {
         </div>
       </div>
       </div>`;
-    })
-    .join("");
+      })
+      .join("");
+  }
 }
 
 function displayRecommendationCards() {
@@ -535,7 +585,7 @@ function displayBookmarksCards() {
   if (!bookmarkedMovies || bookmarkedMovies.innerHTML === "") {
     bookmarkedMovies.innerHTML = `<div class="add_bookmarks light col">
           <p>No bookmarks added yet</p>
-          <a href="#/movies" class="medium link">Add movies</a>
+          <a href="#/movie" class="medium link">Add movies</a>
         </div>`;
   }
 
