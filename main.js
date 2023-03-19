@@ -152,7 +152,7 @@ function route() {
       // calling addBookmarks function
       bookmark.forEach((bookmark) => {
         const cardId = parseInt(bookmark.closest(".card").dataset.cardId);
-        const isBookmarked = bookmarkState[cardId] || false;
+        const isBookmarked = bookmarkState[cardId] ?? false;
 
         bookmark
           .querySelector(".bookmark_icon_1")
@@ -172,6 +172,8 @@ window.addEventListener("popstate", route);
 window.addEventListener("load", route);
 
 function addBookmarks(event) {
+  event.preventDefault();
+  event.stopPropagation();
   const card = event.currentTarget.closest(".card");
   const cardId = parseInt(card.dataset.cardId);
   const signet = event.target
@@ -185,10 +187,8 @@ function addBookmarks(event) {
     console.log(isBookmarked);
     signet.classList.toggle("bookmark_active", isBookmarked);
     cardData.isBookmarked = isBookmarked;
-    bookmarkState[cardId] = isBookmarked; // stocke l'état de signet dans bookmarkState
+    bookmarkState[cardId] = isBookmarked ?? false; // stocke l'état de signet dans bookmarkState
     localStorage.setItem("bookmarkState", JSON.stringify(bookmarkState));
-
-    displayBookmarksCards(); // appel de la fonction pour mettre à jour les signets affichés
   }
 }
 
@@ -209,6 +209,7 @@ function displaySearch(
 
   console.log(currentTabId);
   input.addEventListener("keyup", function () {
+    console.log(bookmarkState);
     onSearch.style.display = "none";
     result.style.display = "flex";
     value = input.value.trim();
@@ -566,6 +567,7 @@ function displayBookmarksCards() {
   const bookmarkedCards = jsonData.filter(
     (card) => cardIds.indexOf(card.id.toString()) !== -1
   );
+  console.log(cardIds);
   console.log(bookmarkedCards);
 
   bookmarkedMovies.innerHTML = bookmarkedCards
