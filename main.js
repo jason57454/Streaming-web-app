@@ -1,3 +1,27 @@
+window.addEventListener("load", () => {
+  var tab = document.querySelectorAll(".tab");
+  var loader = document.querySelector(".loader");
+
+  function showScreen() {
+    const path = window.location.hash || "#/";
+    loader.style.opacity = "1";
+    for (let i = 0; i < tab.length; i++) {
+      tab[i].style.display = "none";
+      if (tab[i].dataset.path === path) {
+        console.log(tab);
+        tab[i].style.display = "flex";
+        loader.style.opacity = "0";
+      }
+    }
+  }
+
+  window.addEventListener("hashchange", () => {
+    showScreen();
+  });
+
+  showScreen();
+});
+
 let jsonData = [];
 if (typeof bookmarkState === "undefined") {
   bookmarkState = {};
