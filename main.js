@@ -61,10 +61,26 @@ function displayHome() {
 
 function displayMoviesTab() {
   displayMoviesCards();
+  displaySearch(
+    "input_movies",
+    ".result_movie",
+    ".result_movie_message",
+    ".row_14",
+    ".on_search_movie",
+    jsonData
+  );
 }
 
 function displaySeriesTab() {
   displaySeriesCards();
+  displaySearch(
+    "input_series",
+    ".result_series",
+    ".result_series_message",
+    ".row_15",
+    ".on_search_series",
+    jsonData
+  );
 }
 
 function displayBookmarks() {
@@ -189,43 +205,55 @@ function displaySearch(
   let result = document.querySelector(resultClass);
   let resultMessage = document.querySelector(resultMessageClass);
   let displayResult = document.querySelector(displayResultClass);
-  value = input.value.trim();
+  let currentTabId = window.location.hash;
 
-  input.addEventListener("keydown", function (event) {
-    if (event.key) {
-      onSearch.style.display = "none";
-      result.style.display = "flex";
-      value = input.value.trim();
-      resultMessage.innerHTML = "";
-      const filteredData = jsonData.filter((item) =>
-        item.title.toLowerCase().includes(value.toLowerCase())
-      );
+  console.log(currentTabId);
+  input.addEventListener("keyup", function () {
+    onSearch.style.display = "none";
+    result.style.display = "flex";
+    value = input.value.trim();
+    resultMessage.innerHTML = "";
 
-      if (
-        value === null ||
-        value === undefined ||
-        value === "" ||
-        filteredData.length === 0
-      ) {
-        resultMessage.innerHTML = `No result found for "${value}". 
-        You can try again or you can reload the page<a href="#" onclick="location.reload()">here.</a>`;
-        displayResult.style.display = "none";
-      } else if (filteredData.length <= 1) {
-        resultMessage.innerHTML = `Found ${filteredData.length} result for 
-        '${value}'.`;
+    const filteredData = jsonData.filter((item) => {
+      if (currentTabId === "#/movie") {
+        return (
+          item.title.toLowerCase().includes(value.toLowerCase()) &&
+          item.category === "Movie"
+        );
+      } else if (currentTabId === "#/series") {
+        return (
+          item.title.toLowerCase().includes(value.toLowerCase()) &&
+          item.category === "TV Series"
+        );
+      } else if (currentTabId === "#/bookmarks") {
+        return (
+          item.title.toLowerCase().includes(value.toLowerCase()) &&
+          bookmarkState[item.id] === true
+        );
       } else {
-        resultMessage.innerHTML = `Found ${filteredData.length} results for '${value}'.`;
+        return item.title.toLowerCase().includes(value.toLowerCase());
       }
+    });
 
-      if (filteredData.length > 0) {
-        console.log(displayResult);
-        displayResult.style.display = "flex";
-        displayResult.innerHTML = filteredData
-          .map((card) => {
-            return ` 
+    if (value === null || value === undefined) {
+      resultMessage.innerHTML = `No result found for "${value}". 
+        You can try again or you can reload the page<a href="#" onclick="location.reload()">here.</a>`;
+      displayResult.style.display = "none";
+    } else if (value === "") {
+      onSearch.style.display = "block";
+      result.style.display = "none";
+    } else {
+      resultMessage.innerHTML = `Found ${filteredData.length} results for '${value}'.`;
+    }
+
+    if (filteredData.length > 0) {
+      displayResult.style.display = "flex";
+      displayResult.innerHTML = filteredData
+        .map((card) => {
+          return ` 
             <div class="regular_card card col" data-card-id="${card.id}">
       
-      <div class="regular_img play_hover fadeOpacity">
+      <div class="regular_img play_hover">
         <img
           class="bg_regular_img opacity_hover"
           src="${card.thumbnail.regular.large}"
@@ -253,25 +281,22 @@ function displaySearch(
       </div>
       <div class="col col_6">
         <div class="row row_5">
-          <p class="regular_year font_13 year light fadeAnimation">2019</p>
-          <div class="row light regular_category category fadeAnimation">
+          <p class=" font_13 year light">2019</p>
+          <div class="row light category ">
             <img src="./assets/icon-category-${
               card.category === "Movie" ? "movie" : "tv"
             }.svg" alt="" />
             <p class="font_13">${card.category}</p>
           </div>
-          <p class="regular_rating rating light font_13 fadeAnimation">${
-            card.rating
-          }</p>
+          <span class="rating light font_13 ">${card.rating}</span>
         </div>
         <div class="regular_title title_card">
-          <p class="medium fadeAnimation">${card.title}</p>
+          <span class="medium ">${card.title}</span>
         </div>
       </div>
     </div>`;
-          })
-          .join("");
-      }
+        })
+        .join("");
     }
   });
 }
@@ -432,14 +457,6 @@ function displayRecommendationCards() {
 
 function displayMoviesCards() {
   let card = document.querySelector(".row_9");
-  displaySearch(
-    "input_movies",
-    ".result_movie",
-    ".result_movie_message",
-    ".row_14",
-    ".on_search_movie",
-    jsonData
-  );
 
   card.innerHTML = jsonData
     .filter((card) => card.category === "Movie")
@@ -492,14 +509,6 @@ function displayMoviesCards() {
 
 function displaySeriesCards() {
   let card = document.querySelector(".row_8");
-  displaySearch(
-    "input_series",
-    ".result_series",
-    ".result_series_message",
-    ".row_15",
-    ".on_search_series",
-    jsonData
-  );
 
   card.innerHTML = jsonData
     .filter((card) => card.category === "TV Series")
