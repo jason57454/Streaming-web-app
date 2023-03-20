@@ -116,8 +116,10 @@
                 <p class="light">Trending</p>
               </div>
               <div class="swiper">
-                <div class="row row_1 swiper-wrapper">
-                  <!-- HTML from displayTrendingCards function -->
+                <div class="swiper-wrapper">
+                  <div class="row row_1">
+                    <!-- HTML from displayTrendingCards function -->
+                  </div>
                 </div>
               </div>
             </div>
@@ -265,10 +267,11 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <script>
-      const swiper = new Swiper(".swiper", {
-        // Optional parameters
-        direction: "horizontal",
-        loop: false,
+      var swiper = new Swiper(".mySwiper", {
+        scrollbar: {
+          el: ".swiper-scrollbar",
+          hide: true,
+        },
       });
     </script>
   </body>
