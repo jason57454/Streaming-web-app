@@ -205,21 +205,6 @@ function displaySearch(
   let resultMessage = document.querySelector(resultMessageClass);
   let displayResult = document.querySelector(displayResultClass);
   let currentTabId = window.location.hash;
-  const bookmark = document.querySelectorAll(".bookmark");
-
-  // calling addBookmarks function
-  bookmark.forEach((bookmark) => {
-    const cardId = parseInt(bookmark.closest(".card").dataset.cardId);
-    const isBookmarked = bookmarkState[cardId] ?? false;
-
-    bookmark
-      .querySelector(".bookmark_icon_1")
-      .classList.toggle("bookmark_active", !isBookmarked);
-    bookmark
-      .querySelector(".bookmark_icon_2")
-      .classList.toggle("bookmark_active", isBookmarked);
-    bookmark.addEventListener("click", addBookmarks);
-  });
 
   input.addEventListener("keyup", function () {
     onSearch.style.display = "none";
@@ -314,6 +299,10 @@ function displaySearch(
     </div>`;
         })
         .join("");
+      const searchCards = document.querySelectorAll(".bookmark");
+      searchCards.forEach((card) => {
+        card.addEventListener("click", addBookmarks);
+      });
     }
   });
 }
