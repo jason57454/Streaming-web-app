@@ -396,7 +396,7 @@ input:focus + .line_bot_input {
   flex-direction: row;
 }
 
-.row_1 {
+.swiper-wrapper {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -404,6 +404,10 @@ input:focus + .line_bot_input {
   width: 2546px;
   cursor: -webkit-grab;
   cursor: grab;
+}
+
+.swiper-slide {
+  width: auto !important;
 }
 
 .card {
@@ -535,6 +539,7 @@ input:focus + .line_bot_input {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 100%;
 }
 
 .bg_img_card img {
@@ -719,11 +724,15 @@ input:focus + .line_bot_input {
 
 .bookmark_icon_2 {
   opacity: 0;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 
 .bookmark_active {
   opacity: 1;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
   transition: 0.2s;
 }
 
@@ -1245,7 +1254,7 @@ input:focus + .line_bot_input {
   .trending_card:hover .rating {
     position: absolute;
     bottom: 10px;
-    right: -95px;
+    right: -55px;
     border-radius: 10px;
     padding: 2px 9px;
     text-align: center;
@@ -1280,11 +1289,12 @@ input:focus + .line_bot_input {
   .regular_card {
     margin-right: 15px;
     margin-bottom: 16px;
+    width: calc(50% - 16px);
   }
 
   .bg_regular_img {
-    width: 164px;
-    height: 110px;
+    width: 100%;
+    height: auto;
   }
 
   .regular_title {
@@ -1293,10 +1303,29 @@ input:focus + .line_bot_input {
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 375px) {
   .row_cards {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
   }
+}
+
+@media screen and (max-width: 325px) {
+  .regular_card {
+    width: 164px;
+    height: auto;
+  }
+}
+
+.unknown_page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  color: white;
+  font-size: 20px;
+  text-align: center;
 }
