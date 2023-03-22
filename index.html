@@ -115,11 +115,9 @@
               <div class="heading">
                 <p class="light">Trending</p>
               </div>
-              <div class="swiper">
-                <div class="swiper-wrapper">
-                  <div class="row row_1">
-                    <!-- HTML from displayTrendingCards function -->
-                  </div>
+              <div class="swiper mySwiper">
+                <div class="swiper-wrapper row">
+                  <!-- HTML from displayTrendingCards function -->
                 </div>
               </div>
             </div>
@@ -264,13 +262,42 @@
       </div>
     </div>
     <script src="main.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {
-        scrollbar: {
-          el: ".swiper-scrollbar",
-          hide: true,
+        freeMode: true,
+        centeredSlidesBounds: true,
+        breakpoints: {
+          320: {
+            slidesPerView: 3.6,
+          },
+          375: {
+            slidesPerView: 3.673,
+          },
+          445: {
+            slidesPerView: 3.75,
+          },
+          480: {
+            slidesPerView: 3.787,
+          },
+          640: {
+            slidesPerView: 2.85,
+          },
+          800: {
+            slidesPerView: 2.95,
+          },
+          1180: {
+            slidesPerView: 3.1,
+          },
+          1400: {
+            slidesPerView: 3.3,
+          },
+          1700: {
+            slidesPerView: 3.55,
+          },
+          1920: {
+            slidesPerView: 3.8,
+          },
         },
       });
     </script>
