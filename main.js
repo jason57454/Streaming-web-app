@@ -163,7 +163,12 @@ function route() {
       });
     });
   } else {
-    console.log("Page inconnue");
+    let loader = document.querySelector(".loader");
+    let body = document.getElementById("app");
+
+    loader.style.display = "none";
+    body.innerHTML =
+      "<div class='unknown_page'>We are sorry, the page you are looking for does not exist.</div>";
   }
 }
 
@@ -182,11 +187,11 @@ function addBookmarks(event) {
   const index = jsonData.findIndex((data) => data.id === cardId);
   if (index !== -1) {
     const cardData = jsonData[index];
-    const isBookmarked = !bookmarkState[cardId]; // inverse l'état actuel de signet
+    const isBookmarked = !bookmarkState[cardId]; // reverse current state of the signet
 
     signet.classList.toggle("bookmark_active", isBookmarked);
     cardData.isBookmarked = isBookmarked;
-    bookmarkState[cardId] = isBookmarked ?? false; // stocke l'état de signet dans bookmarkState
+    bookmarkState[cardId] = isBookmarked ?? false; // store bookmark state in bookmarkState
     localStorage.setItem("bookmarkState", JSON.stringify(bookmarkState));
   }
 }
@@ -211,7 +216,6 @@ function displaySearch(
     result.style.display = "flex";
     value = input.value.trim();
     resultMessage.innerHTML = "";
-    console.log(bookmarkState);
 
     const filteredData = jsonData.filter((item) => {
       if (currentTabId === "#/movie") {
@@ -308,7 +312,7 @@ function displaySearch(
 }
 
 function displayTrendingCards() {
-  let card = document.querySelector(".row_1");
+  let card = document.querySelector(".swiper-wrapper");
 
   let mobileCards = window.matchMedia("(max-width: 520px)");
 
@@ -317,8 +321,8 @@ function displayTrendingCards() {
       .filter((card) => card.isTrending === true)
       .map((card) => {
         return ` 
-      <div class="fadeTrendingCard">
-       <div class="trending_card fadeInTrendingCard splide__slide card" data-card-id="${
+      <div class="fadeTrendingCard swiper-slide">
+       <div class="trending_card fadeInTrendingCard  card" data-card-id="${
          card.id
        }">
         <div class="bg_img_card  play_hover">
@@ -362,8 +366,8 @@ function displayTrendingCards() {
       .filter((card) => card.isTrending === true)
       .map((card) => {
         return ` 
-      <div class="fadeTrendingCard">
-       <div class="trending_card fadeInTrendingCard splide__slide card" data-card-id="${
+      <div class="fadeTrendingCard swiper-slide">
+       <div class="trending_card fadeInTrendingCard card" data-card-id="${
          card.id
        }">
         <div class="bg_img_card  play_hover">
